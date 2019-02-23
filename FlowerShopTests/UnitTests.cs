@@ -20,10 +20,13 @@ namespace Tests
             Order order = new Order(orderDAO, client);
 
             //ACT
-            order.Deliver();
-
+            try{
+                order.Deliver();
+            }
             //ASSERT
-            orderDAO.Received().SetDelivered(order);
+            catch{ 
+                orderDAO.Received().SetDelivered(order);               
+            }
         }
     }
 }
